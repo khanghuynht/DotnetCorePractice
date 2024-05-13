@@ -9,5 +9,6 @@ namespace DocnetCorePractice.Model
         public ProductType Type { get; set; }
         public double Price { get; set; }
         public int Discount { get; set; }
+        
     }
 }

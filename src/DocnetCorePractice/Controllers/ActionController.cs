@@ -37,8 +37,9 @@ namespace DocnetCorePractice.Controllers
             return Ok(_authenticationService.Authenticator(request));
         }
 
-        /*    [ApiKey]
-            [Authorize(AuthenticationSchemes = "Bearer")]*/
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [ApiKey]
         [HttpGet("/api/[controller]/getalluser")]
         public IActionResult GetAllUser()
         {

@@ -13,5 +13,6 @@ namespace DocnetCorePractice.Model
         public string PhoneNumber { get; set; }
         public double Balance { get; set; }
         public int TotalProduct { get; set; }
+
     }
 }

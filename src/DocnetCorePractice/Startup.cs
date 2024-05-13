@@ -73,7 +73,7 @@ namespace DocnetCorePractice
                 });
             }
 
-           /* app.UseMiddleware<ApiKeyAuthenExtension>();*/
+  /*          app.UseMiddleware<ApiKeyAuthenExtension>();*/
             app.UseSerilogRequestLogging();
             app.MapControllers();
             app.UseRouting();
@@ -86,7 +86,7 @@ namespace DocnetCorePractice
 
         private void AddDI(IServiceCollection services)
         {
-            services.AddScoped<IInitData, InitData>();
+            services.AddSingleton<IInitData, InitData>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICaffeService, CaffeService>();
             services.AddScoped<IOrderService, OrderService>();
