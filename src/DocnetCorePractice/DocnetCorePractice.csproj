@@ -4,9 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>12f66a69-443c-4071-b638-4966ef5b95ac</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/a8915869-34cb-484d-8e61-076484132689/resourceGroups/DotnetPraticeResource/providers/microsoft.insights/components/DotnetPracticeCore</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.19">
       <PrivateAssets>all</PrivateAssets>
