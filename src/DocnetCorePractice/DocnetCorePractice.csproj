@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>12f66a69-443c-4071-b638-4966ef5b95ac</UserSecretsId>
-    <ApplicationInsightsResourceId>/subscriptions/a8915869-34cb-484d-8e61-076484132689/resourceGroups/DotnetPraticeResource/providers/microsoft.insights/components/DotnetPracticeCore</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/a8915869-34cb-484d-8e61-076484132689/resourceGroups/DotnetPracticeResources/providers/microsoft.insights/components/DotnetCorePractice</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
