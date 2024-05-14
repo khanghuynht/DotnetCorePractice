@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DocnetCorePractice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240505154218_Init")]
-    partial class Init
+    [Migration("20240514122507_EntityData")]
+    partial class EntityData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,7 +180,6 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Account")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Address")
@@ -200,7 +199,6 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -223,7 +221,6 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")

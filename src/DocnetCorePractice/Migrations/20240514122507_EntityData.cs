@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DocnetCorePractice.Migrations
 {
-    public partial class Init : Migration
+    public partial class EntityData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,7 @@ namespace DocnetCorePractice.Migrations
                     Type = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Discount = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false,defaultValue:true),
                     CreateTimes = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdateTimes = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateUser = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -64,15 +64,15 @@ namespace DocnetCorePractice.Migrations
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Account = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Account = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VerificationToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ResetToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ResetTokenExpire = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Balance = table.Column<double>(type: "float", nullable: false),
                     TotalProduct = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false,defaultValue:true),
                     Roles = table.Column<int>(type: "int", nullable: false),
                     CreateTimes = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdateTimes = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -116,7 +116,7 @@ namespace DocnetCorePractice.Migrations
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Token = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Expires = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {

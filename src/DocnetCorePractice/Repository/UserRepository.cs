@@ -19,11 +19,20 @@ namespace DocnetCorePractice.Repository
         }
         public int AddUser(UserEntity entity)
         {
-            using (var context = new AppDbContext())
+            try
+            {
+                _context.Set<UserEntity>().Add(entity);
+                return _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+/*            using (var context = new AppDbContext())
             {
                 context.Set<UserEntity>().Add(entity);
                 return context.SaveChanges();
-            }
+            }*/
         }
 
         public int DeleteUser(string id)

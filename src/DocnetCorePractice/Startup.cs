@@ -37,7 +37,7 @@ namespace DocnetCorePractice
                 options.LowercaseQueryStrings = false;
             });
 
-            var connectionString = _configuration.GetConnectionString("DefaultConnectStrings");
+            var connectionString = _configuration.GetConnectionString("DefaultConnectString");
             AddDI(services);
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
             services.AddSingleton<ApiKeyAuthorizationFilter>();

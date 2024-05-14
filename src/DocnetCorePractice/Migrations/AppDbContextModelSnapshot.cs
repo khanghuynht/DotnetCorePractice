@@ -37,8 +37,7 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("(1)");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("LastUpdateTimes")
                         .HasColumnType("datetime2");
@@ -157,8 +156,7 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("(1)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Token")
                         .HasColumnType("nvarchar(max)");
@@ -180,7 +178,6 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Account")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Address")
@@ -200,7 +197,6 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -209,7 +205,7 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit").HasDefaultValueSql("(1)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -223,7 +219,6 @@ namespace DocnetCorePractice.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
