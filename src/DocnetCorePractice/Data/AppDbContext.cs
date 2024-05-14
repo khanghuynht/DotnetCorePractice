@@ -5,15 +5,16 @@ namespace DocnetCorePractice.Data
 {
     public class AppDbContext :DbContext,IDbContext
     {
+        private readonly IConfiguration _configuration;
 
         public AppDbContext()
         {
-            
+
         }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
-            
+            _configuration = configuration;
         }
         DbSet<UserEntity> UserEntity { get; set; }
         DbSet<CaffeEntity> CaffeEntity { get; set; }
@@ -23,11 +24,12 @@ namespace DocnetCorePractice.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnectStrings"));
+            if (optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(
+                    _configuration.GetConnectionString("DefaultConnectStrings")
+                );
+            }
         }
     }
 }

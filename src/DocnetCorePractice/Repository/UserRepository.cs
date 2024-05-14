@@ -12,7 +12,11 @@ namespace DocnetCorePractice.Repository
     }
     public class UserRepository : IUserRepository
     {
-        public UserRepository() { }
+        private readonly AppDbContext _context;
+        public UserRepository(AppDbContext context)
+        {
+            _context = context;
+        }
         public int AddUser(UserEntity entity)
         {
             using (var context = new AppDbContext())
@@ -29,10 +33,19 @@ namespace DocnetCorePractice.Repository
 
         public List<UserEntity>? GetAllUser()
         {
-            using (var context = new AppDbContext())
+            /*            using (var context = new AppDbContext())
+                        {
+                            var user = context.Set<UserEntity>().AsNoTracking().ToList();
+                            return user;
+                        }*/
+            try
             {
-                var user = context.Set<UserEntity>().AsNoTracking().ToList();
+                var user = _context.Set<UserEntity>().AsNoTracking().ToList();
                 return user;
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
     }
