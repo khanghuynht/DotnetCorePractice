@@ -47,16 +47,29 @@ namespace DocnetCorePractice.Services
 
         private RefreshTokens CreateRefreshToken(UserEntity account)
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            Random res = new Random();
+
+            // String that contain both alphabets and numbers 
+            string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            int size = 10;
+
+            // Initializing the empty string 
             string result = "";
-            Random random = new Random();
-            for (int i = 0; i < 10; i++)
+
+            for (int i = 0; i < size; i++)
             {
-                result.Append(chars[random.Next(chars.Length)]);
+
+                // Selecting a index randomly 
+                int x = res.Next(str.Length);
+
+                // Appending the character at the  
+                // index to the random alphanumeric string. 
+                result = result + str[x];
             }
             var token = result; // Viết hàm tạo chuỗi random string
             var refreshToken = new RefreshTokens
             {
+                Id = Guid.NewGuid(),
                 UserId = account.Id,
                 Expires = DateTime.Now.AddDays(1),
                 IsActive = true,
