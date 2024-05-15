@@ -17,9 +17,11 @@ namespace DocnetCorePractice.Services
     {
         private readonly string Key = "suifbweudfwqudgweufgewufgwefcgweiudgweidgwed";
         private readonly IUserRepository _userRepository;
-        public AuthenticationService(IUserRepository userRepository)
+        private readonly IRefreshTokensRepository _refreshTokenRepository;
+        public AuthenticationService(IUserRepository userRepository, IRefreshTokensRepository refreshTokenRepository)
         {
             _userRepository = userRepository;
+            _refreshTokenRepository = refreshTokenRepository;
         }
 
         public ResponseLoginModel Authenticator(RequestLoginModel model)
@@ -45,9 +47,14 @@ namespace DocnetCorePractice.Services
 
         private RefreshTokens CreateRefreshToken(UserEntity account)
         {
-            var randomByte = new byte[64];
-            var random = new Random();
-            var token = ""; // Viết hàm tạo chuỗi random string
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            string result = "";
+            Random random = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                result.Append(chars[random.Next(chars.Length)]);
+            }
+            var token = result; // Viết hàm tạo chuỗi random string
             var refreshToken = new RefreshTokens
             {
                 UserId = account.Id,
@@ -56,6 +63,11 @@ namespace DocnetCorePractice.Services
                 Token = token
             };
             // viết code insert refreshToken vào DB
+            var save = _refreshTokenRepository.InsertToken(refreshToken);
+            if(save <= 0)
+            {
+                throw new ArgumentException("Error when insert refresh token");
+            }
             return refreshToken;
         }
 

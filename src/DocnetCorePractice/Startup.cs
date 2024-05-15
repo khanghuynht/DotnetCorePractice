@@ -91,6 +91,7 @@ namespace DocnetCorePractice
             services.AddScoped<ICaffeService, CaffeService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddSingleton<IRefreshTokensRepository, RefreshTokensRepository>();
         }
     }
 }
