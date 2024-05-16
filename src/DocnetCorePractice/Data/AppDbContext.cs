@@ -27,7 +27,7 @@ namespace DocnetCorePractice.Data
             if (optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                    _configuration.GetConnectionString("DefaultConnectString")
+                    _configuration.GetConnectionString("DefaultConnectStrings")
                 );
             }
         }

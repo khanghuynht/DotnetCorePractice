@@ -17,9 +17,11 @@ namespace DocnetCorePractice.Services
     {
         private readonly string Key = "suifbweudfwqudgweufgewufgwefcgweiudgweidgwed";
         private readonly IUserRepository _userRepository;
-        public AuthenticationService(IUserRepository userRepository)
+        private readonly IRefreshTokensRepository _refreshTokenRepository;
+        public AuthenticationService(IUserRepository userRepository, IRefreshTokensRepository refreshTokenRepository)
         {
             _userRepository = userRepository;
+            _refreshTokenRepository = refreshTokenRepository;
         }
 
         public ResponseLoginModel Authenticator(RequestLoginModel model)
@@ -45,17 +47,40 @@ namespace DocnetCorePractice.Services
 
         private RefreshTokens CreateRefreshToken(UserEntity account)
         {
-            var randomByte = new byte[64];
-            var random = new Random();
-            var token = ""; // Viết hàm tạo chuỗi random string
+            Random res = new Random();
+
+            // String that contain both alphabets and numbers 
+            string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            int size = 10;
+
+            // Initializing the empty string 
+            string result = "";
+
+            for (int i = 0; i < size; i++)
+            {
+
+                // Selecting a index randomly 
+                int x = res.Next(str.Length);
+
+                // Appending the character at the  
+                // index to the random alphanumeric string. 
+                result = result + str[x];
+            }
+            var token = result; // Viết hàm tạo chuỗi random string
             var refreshToken = new RefreshTokens
             {
+                Id = Guid.NewGuid(),
                 UserId = account.Id,
                 Expires = DateTime.Now.AddDays(1),
                 IsActive = true,
                 Token = token
             };
             // viết code insert refreshToken vào DB
+            var save = _refreshTokenRepository.InsertToken(refreshToken);
+            if(save <= 0)
+            {
+                throw new ArgumentException("Error when insert refresh token");
+            }
             return refreshToken;
         }
 

@@ -37,7 +37,7 @@ namespace DocnetCorePractice
                 options.LowercaseQueryStrings = false;
             });
 
-            var connectionString = _configuration.GetConnectionString("DefaultConnectString");
+            var connectionString = _configuration.GetConnectionString("DefaultConnectStrings");
             AddDI(services);
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
             services.AddSingleton<ApiKeyAuthorizationFilter>();
@@ -91,6 +91,7 @@ namespace DocnetCorePractice
             services.AddScoped<ICaffeService, CaffeService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRefreshTokensRepository, RefreshTokensRepository>();
         }
     }
 }
