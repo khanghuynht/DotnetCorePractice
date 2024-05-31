@@ -18,12 +18,12 @@ using ILogger = Serilog.ILogger;
 namespace DocnetCorePractice.Controllers
 {
     [ApiController]
-    public class ActionController : ControllerBase
+    public class AccountController : ControllerBase
     {
         private readonly IAuthenticationService _authenticationService;
         public readonly ILogger _logger;
         public IUserService _userService;
-        public ActionController(IServiceProvider serviceProvider)
+        public AccountController(IServiceProvider serviceProvider)
         {
             _authenticationService = serviceProvider.GetRequiredService<IAuthenticationService>();
             _userService = serviceProvider.GetRequiredService<IUserService>();
